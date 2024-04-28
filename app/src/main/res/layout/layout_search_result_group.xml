@@ -1,25 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   tools:ignore="Overdraw">
 
+  <HorizontalScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/item"
+    android:paddingStart="16dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    tools:ignore="RtlSymmetry">
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/items"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      tools:ignore="ScrollViewSize" />
+
+  </HorizontalScrollView>
+
   <LinearLayout
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     android:clickable="true"
     android:descendantFocusability="blocksDescendants"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingStart="16dp"
-    android:paddingTop="8dp"
-    android:paddingEnd="16dp"
-    android:paddingBottom="8dp"
     tools:ignore="UnusedAttribute">
 
     <ImageView
@@ -37,25 +56,5 @@
       tools:text="Filename" />
 
   </LinearLayout>
-
-  <HorizontalScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/item"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    android:fillViewport="true"
-    android:paddingStart="16dp"
-    tools:ignore="RtlSymmetry">
-
-    <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/items"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:paddingStart="8dp"
-      android:paddingEnd="8dp"
-      tools:ignore="ScrollViewSize" />
-
-  </HorizontalScrollView>
 
 </RelativeLayout>

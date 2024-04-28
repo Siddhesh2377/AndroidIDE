@@ -62,8 +62,7 @@ class OnboardingActivity : AppIntro2() {
     }
   }
 
-  private val activityScope =
-    CoroutineScope(Dispatchers.Main + CoroutineName("OnboardingActivity"))
+  private val activityScope = CoroutineScope(Dispatchers.Main + CoroutineName("OnboardingActivity"))
 
   private var listJdkInstallationsJob: Job? = null
 
@@ -94,24 +93,17 @@ class OnboardingActivity : AppIntro2() {
     if (!PackageUtils.isCurrentUserThePrimaryUser(this)) {
       val errorMessage = getString(string.bootstrap_error_not_primary_user_message,
         MarkdownUtils.getMarkdownCodeForString(TermuxConstants.TERMUX_PREFIX_DIR_PATH, false))
-      addSlide(OnboardingInfoFragment.newInstance(
-        getString(string.title_unsupported_user),
-        errorMessage,
-        R.drawable.ic_alert,
-        ContextCompat.getColor(this, R.color.color_error)
-      ))
+      addSlide(
+        OnboardingInfoFragment.newInstance(getString(string.title_unsupported_user), errorMessage,
+          R.drawable.ic_alert, ContextCompat.getColor(this, R.color.color_error)))
       return
     }
 
     if (isInstalledOnSdCard()) {
       val errorMessage = getString(string.bootstrap_error_installed_on_portable_sd,
         MarkdownUtils.getMarkdownCodeForString(TermuxConstants.TERMUX_PREFIX_DIR_PATH, false))
-      addSlide(OnboardingInfoFragment.newInstance(
-        getString(string.title_install_location_error),
-        errorMessage,
-        R.drawable.ic_alert,
-        ContextCompat.getColor(this, R.color.color_error)
-      ))
+      addSlide(OnboardingInfoFragment.newInstance(getString(string.title_install_location_error),
+        errorMessage, R.drawable.ic_alert, ContextCompat.getColor(this, R.color.color_error)))
       return
     }
 
@@ -172,14 +164,12 @@ class OnboardingActivity : AppIntro2() {
   }
 
   private fun checkToolsIsInstalled(): Boolean {
-    return IJdkDistributionProvider.getInstance().installedDistributions.isNotEmpty()
-        && Environment.ANDROID_HOME.exists()
+    return IJdkDistributionProvider.getInstance().installedDistributions.isNotEmpty() && Environment.ANDROID_HOME.exists()
   }
 
   private fun isSetupCompleted(): Boolean {
-    return checkToolsIsInstalled()
-        && StatPreferences.statConsentDialogShown
-        && PermissionsFragment.areAllPermissionsGranted(this)
+    return checkToolsIsInstalled() && StatPreferences.statConsentDialogShown && PermissionsFragment.areAllPermissionsGranted(
+      this)
   }
 
   private fun tryNavigateToMainIfSetupIsCompleted(): Boolean {
@@ -213,25 +203,19 @@ class OnboardingActivity : AppIntro2() {
 
   private fun isInstalledOnSdCard(): Boolean {
     // noinspection SdCardPath
-    return PackageUtils.isAppInstalledOnExternalStorage(this) &&
-        TermuxConstants.TERMUX_FILES_DIR_PATH != filesDir.absolutePath
-      .replace("^/data/user/0/".toRegex(), "/data/data/")
+    return PackageUtils.isAppInstalledOnExternalStorage(
+      this) && TermuxConstants.TERMUX_FILES_DIR_PATH != filesDir.absolutePath.replace(
+        "^/data/user/0/".toRegex(), "/data/data/")
   }
 
   private fun checkDeviceSupported(): Boolean {
     val configProvider = IDEBuildConfigProvider.getInstance()
 
     if (!configProvider.supportsCpuAbi()) {
-      addSlide(OnboardingInfoFragment.newInstance(
-        getString(string.title_unsupported_device),
-        getString(
-          string.msg_unsupported_device,
-          configProvider.cpuArch.abi,
-          configProvider.deviceArch.abi
-        ),
-        R.drawable.ic_alert,
-        ContextCompat.getColor(this, R.color.color_error)
-      ))
+      addSlide(OnboardingInfoFragment.newInstance(getString(string.title_unsupported_device),
+        getString(string.msg_unsupported_device, configProvider.cpuArch.abi,
+          configProvider.deviceArch.abi), R.drawable.ic_alert,
+        ContextCompat.getColor(this, R.color.color_error)))
       return false
     }
 
@@ -239,15 +223,10 @@ class OnboardingActivity : AppIntro2() {
       // IDE's build flavor is NOT the primary arch of the device
       // warn the user
       if (!archConfigExperimentalWarningIsShown()) {
-        addSlide(OnboardingInfoFragment.newInstance(
-          getString(string.title_experiment_flavor),
-          getString(string.msg_experimental_flavor,
-            configProvider.cpuArch.abi,
-            configProvider.deviceArch.abi
-          ),
-          R.drawable.ic_alert,
-          ContextCompat.getColor(this, R.color.color_warning)
-        ))
+        addSlide(OnboardingInfoFragment.newInstance(getString(string.title_experiment_flavor),
+          getString(string.msg_experimental_flavor, configProvider.cpuArch.abi,
+            configProvider.deviceArch.abi), R.drawable.ic_alert,
+          ContextCompat.getColor(this, R.color.color_warning)))
         prefManager.putBoolean(KEY_ARCHCONFIG_WARNING_IS_SHOWN, true)
       }
     }

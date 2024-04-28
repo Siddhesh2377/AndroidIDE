@@ -25,7 +25,7 @@
   android:focusable="true"
   android:scaleType="centerCrop"
   app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
-  tools:tint="?colorOnSurface"
-  tools:srcCompat="@drawable/ic_android">
+  tools:srcCompat="@drawable/ic_android"
+  tools:tint="?colorOnSurface">
 
 </com.google.android.material.imageview.ShapeableImageView>

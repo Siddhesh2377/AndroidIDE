@@ -17,48 +17,32 @@
   ~   along with AndroidIDE.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <include
-    android:id="@+id/border"
-    layout="@layout/layout_divider_horizontal"
-    android:layout_width="match_parent"
-    android:layout_marginBottom="2dp"
-    android:layout_height="0.5dp"
-    android:layout_alignParentTop="true" />
-
   <ViewFlipper
     android:id="@+id/header_container"
     android:layout_width="match_parent"
-    android:layout_below="@id/border"
     android:layout_height="@dimen/editor_sheet_collapsed_height"
+    android:layout_below="@id/border"
     android:background="?attr/colorSurface">
-
-    <include
-      layout="@layout/layout_editor_build_status"
-      android:id="@+id/build_status"/>
 
     <com.itsaky.androidide.ui.SymbolInputView
       android:id="@+id/symbol_input"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      android:layout_height="wrap_content" />
 
     <include
-      layout="@layout/layout_editor_bottom_action"
-      android:id="@+id/bottom_action"/>
+      android:id="@+id/build_status"
+      layout="@layout/layout_editor_build_status" />
+
+    <include
+      android:id="@+id/bottom_action"
+      layout="@layout/layout_editor_bottom_action" />
 
   </ViewFlipper>
-
-  <com.google.android.material.tabs.TabLayout
-    android:id="@+id/tabs"
-    style="@style/AppTheme.TabLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/header_container" />
 
   <androidx.legacy.widget.Space
     android:id="@+id/space_bottom"
@@ -74,29 +58,44 @@
     android:layout_height="match_parent"
     android:layout_above="@id/space_bottom"
     android:layout_below="@id/tabs"
+    android:background="?attr/colorSurface"
     android:clickable="true"
-    android:focusable="false"
-    android:background="?attr/colorSurface" />
+    android:focusable="false" />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/clear_fab"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="16dp"
     android:layout_above="@id/space_bottom"
     android:layout_alignParentEnd="true"
-    android:layout_margin="16dp"
     android:src="@drawable/ic_sweep_delete" />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/share_output_fab"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
     android:layout_above="@id/clear_fab"
     android:layout_alignParentEnd="true"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
     android:src="@drawable/ic_share" />
+
+  <com.google.android.material.tabs.TabLayout
+    android:id="@+id/tabs"
+    style="@style/AppTheme.TabLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/header_container" />
+
+  <include
+    android:id="@+id/border"
+    layout="@layout/layout_divider_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:layout_marginBottom="2dp"
+    android:layout_alignParentTop="true" />
 
 </RelativeLayout>

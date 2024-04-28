@@ -47,9 +47,7 @@ class MainFragment : BaseFragment() {
     private val log = LoggerFactory.getLogger(MainFragment::class.java)
   }
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     binding = FragmentMainBinding.inflate(inflater, container, false)
     return binding!!.root
   }

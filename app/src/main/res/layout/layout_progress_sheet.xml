@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:gravity="start|center_vertical"
-  android:padding="8dp">
-
-  <com.google.android.material.progressindicator.CircularProgressIndicator
-    android:id="@+id/progress"
-    android:layout_width="48dp"
-    android:layout_height="48dp"
-    android:layout_marginEnd="16dp"
-    android:indeterminate="true"
-    android:padding="10dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+  android:padding="8dp"
+  android:gravity="start|center_vertical">
 
   <TextView
     android:id="@+id/message"
@@ -47,5 +35,16 @@
     app:layout_constraintStart_toStartOf="@id/message"
     app:layout_constraintTop_toBottomOf="@id/message"
     tools:text="@string/please_wait" />
+
+  <com.google.android.material.progressindicator.CircularProgressIndicator
+    android:id="@+id/progress"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_marginEnd="16dp"
+    android:padding="10dp"
+    android:indeterminate="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
